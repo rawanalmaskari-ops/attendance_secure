@@ -1,0 +1,20 @@
+{
+    "users": [
+        {
+            "username": "ali",
+            "password_hash": "scrypt:32768:8:1$wGY2BxqhUdHRzUzT$c54b21fac8a796253ff187ecb3a18523118c5b7e0672015bb97b47fba2f282df777cb5feb2a2a5603dc0b525f22105d36efcecd62230e3bec1eabbe29f2cb9c9"
+        },
+        {
+            "username": "rawan",
+            "password_hash": "scrypt:32768:8:1$vyjUNbZ8IjdbmVHz$04b8da144c5bc4c2a4931827cd0ded228e65acd8295449ce6a731d6a9ecfcdb066cbfb85cbabeefb50eec883a02fc4ea1d0aaad03b73bc60eadfce704fc9ea9b"
+        },
+        {
+            "username": "ali",
+            "password_hash": "scrypt:32768:8:1$KOSf1MSv9GznJsGz$fc3448ee9cecf8b33a7c03191723001a08a0eb8ac03408f4b91fb4048fcd3952844c007bc5b87c3fd4483a7b6cf99cd220fabc4fc15be7ec92dcf641b3150da8"
+        },
+        {
+            "username": "rawan",
+            "password_hash": "scrypt:32768:8:1$exrE8x4Q2tdCMZOi$93bb96a214e5e894014f4cda427622b436737a8db9e585c69d318b90d151ffc358e47e85e611a0f9cc0ac42f5a150dd3b20a044f55ea485687d901eb47070e22"
+        }
+    ]
+}
