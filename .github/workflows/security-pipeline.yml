@@ -25,20 +25,18 @@ jobs:
       - name: Run Bandit (Security Linter)
         run: |
           bandit -r . || true
-        # سبب || true هو منع فشل البايبلاين بسبب التحذيرات
 
       - name: Run pip-audit (Vulnerability Scan)
         run: |
           pip-audit --ignore-vuln PYSEC-0000 || true
-        # نفس الشي، منع إيقاف الاكشن بسبب وجود ثغرات
 
       - name: Final log message
         run: echo "Security checks completed successfully ✅"
 
-          dast-scan:
+  dast-scan:
     name: DAST (Dynamic Analysis) with ZAP
     runs-on: ubuntu-latest
-    needs: security-checks   # بعد ما يخلص Bandit + pip-audit
+    needs: security-checks
 
     steps:
       - name: Checkout Code
@@ -57,7 +55,7 @@ jobs:
       - name: Start Flask App
         run: |
           nohup python app.py > flask.log 2>&1 &
-          sleep 15   # وقت كافي عشان السيرفر يشغل
+          sleep 15
 
       - name: Run ZAP Baseline Scan
         uses: zaproxy/action-baseline@v0.13.0
@@ -66,4 +64,5 @@ jobs:
           target: "http://localhost:5000"
           fail_action: false
           artifact_name: zapscan
+
 
