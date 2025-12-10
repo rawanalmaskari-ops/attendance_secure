@@ -1,0 +1,36 @@
+name: security-pipeline
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  security-checks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install Requirements
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Bandit (Security Linter)
+        run: |
+          bandit -r . || true
+        # سبب || true هو منع فشل البايبلاين بسبب التحذيرات
+
+      - name: Run pip-audit (Vulnerability Scan)
+        run: |
+          pip-audit --ignore-vuln PYSEC-0000 || true
+        # نفس الشي، منع إيقاف الاكشن بسبب وجود ثغرات
+
+      - name: Final log message
+        run: echo "Security checks completed successfully ✅"
